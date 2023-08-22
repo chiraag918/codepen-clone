@@ -5,7 +5,6 @@ export const initialHtmlContent = `<html>
 <body>
 	<div>RESET THE EDITORS & START CODING!!!</div>
 	<div class="spin">
-		<div class="inner"></div>
 	</div>
   <div class="note-container">
     <div class="note">To reset, click/hover on RED button on toolbar</div>
@@ -15,7 +14,7 @@ export const initialHtmlContent = `<html>
 </html> `;
 
 export const initialCssContent = `body,.spin{
-	position:relative;
+ position:relative;
  display:flex;
  justify-content:space-evenly;
  flex-direction:column;
@@ -30,8 +29,8 @@ body{
  overflow:hidden;
 }
 .spin{
- width:150px;
- height:150px;
+ width:6vw;
+ height:6vw;
  border-radius:50%;
  box-shadow: 2px 2px 8px white,
 						 4px 4px 8px #fff;
@@ -48,31 +47,6 @@ body{
 .note{
 	 font-size:15px;
 	 margin-top:10px;
-}
-.inner{
- width: 120px;
- height:120px;
- border-radius: 50%;
- border: 8px solid #eee;
-	border-right:10px solid transparent;
- animation: inner 1s linear infinite;
-}
-@keyframes inner{
- 0%{
-	 transform: rotate(0deg);
- }
- 20%{
-	 transform: rotate(10deg);
- }
- 50%{
-	 transform: rotate(100deg);
- }
- 75%{
-	 transform: rotate(200deg);
- }
- 100%{
-	 transform: rotate(360deg);
- }
 }
 @keyframes spin{
  0%{
