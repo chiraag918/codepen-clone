@@ -6,6 +6,7 @@ body {
 
 iframe{
   border: none;
+  overflow: scroll;
 }
 
 .container {

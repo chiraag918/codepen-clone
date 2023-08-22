@@ -9,6 +9,8 @@ import {
 	initialHtmlContent,
 	initialJsContent,
 } from "../constants";
+import { imageSources } from "../assets/images";
+import ImagePreloader from "../utilities/ImagePreloader";
 
 function App() {
 	/* 
@@ -41,7 +43,7 @@ function App() {
 	const handleTopPaneAnimationEnd = () => setShowIframe(true);
 
 	return (
-		<>
+		<ImagePreloader images={imageSources}>
 			<div
 				className="container primary-container"
 				onAnimationEnd={handleTopPaneAnimationEnd}
@@ -80,7 +82,7 @@ function App() {
 					/>
 				</div>
 			)}
-		</>
+		</ImagePreloader>
 	);
 }
 
