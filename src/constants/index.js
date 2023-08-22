@@ -1,63 +1,69 @@
-export const initialHtmlContent = `<html>
+export const initialHtmlContent = `<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>loader</title>
-	</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Loader Example</title>
+</head>
 <body>
-	<div>RESET THE EDITORS & START CODING!!!</div>
-	<div class="spin">
-	</div>
-  <div class="note-container">
-    <div class="note">To reset, click/hover on RED button on toolbar</div>
-    <div class="note">To download, click on YELLOW button on toolbar</div>
+  <div class="loader"></div>
+  <div class="content">
+    <h1>Start Coding</h1>
+    <p>Reset the editor by clicking/hovering on the red button</p>
+		<p>Save contents of editor by clicking on the yellow button</p>
   </div>
+  <script src="script.js"></script>
 </body>
-</html> `;
+</html>`;
 
-export const initialCssContent = `body,.spin{
- position:relative;
- display:flex;
- justify-content:space-evenly;
- flex-direction:column;
- color: white;
- font-size: 18px;
- align-items:center;
+export const initialCssContent = `body {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+	align-content:center;
+	margin: 0;
+  padding: 0;
+  min-height: 80vh;
+	overflow:scroll;
+	color: white;
+  background-color: black;
+  font-family: Arial, sans-serif;
 }
-body{
- background:black;
- width:100%;
- height:100vh;
- overflow:hidden;
-}
-.spin{
- width:6vw;
- height:6vw;
- border-radius:50%;
- box-shadow: 2px 2px 8px white,
-						 4px 4px 8px #fff;
- border:10px solid #fff;
-	border-bottom:10px solid transparent;
- border-top:10px solid transparent;
- animation: spin 1.4s linear infinite;
-}
-.note-container{
-	 display:flex;
-	 flex-direction: column;
-	 align-items:center;
-}
-.note{
-	 font-size:15px;
-	 margin-top:10px;
-}
-@keyframes spin{
- 0%{
-	 transform: rotate(0deg);
- }
- 100%{
-	 transform: rotate(-360deg);
- }
-}`;
 
-export const initialJsContent = ``;
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.content {
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+	font-size: 16px;
+	margin-top: 8px;
+}
+`;
+
+export const initialJsContent = `// This is a placeholder for any JavaScript you might want to add`;
 
 export const INITIAL_CONTENT_MAP = {
 	javascript: initialJsContent,

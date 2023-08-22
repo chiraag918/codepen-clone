@@ -29,38 +29,33 @@ export default function Editor(props) {
 	const { language, displayName, value, onChange, animationQueue } = props;
 
 	// Create a BLOB file for making the content in the editor downloadable
-	const file = new Blob([value], { type: "text/plain" });
+	const file = new Blob([value], { type: `text/${EXTENSION_MAP[language]}` });
 
-	// state to check if device is mobile or not
-	const [isMobileDevice, setIsMobileDevice] = useState(
-		window.matchMedia("(max-width: 480px)").matches
-	);
+	const [isMobile, setIsMobile] = useState(false);
 	// state to collapse/expand editor
-	const [openEditor, setOpenEditor] = useState(!isMobileDevice);
+	const [openEditor, setOpenEditor] = useState(!isMobile);
 	// state to show toolbar button's icons on hover or show always
-	const [toolBarButtonsHover, setToolBarButtonsHover] =
-		useState(isMobileDevice);
+	const [toolBarButtonsHover, setToolBarButtonsHover] = useState(isMobile);
 	// state to open/close reset dropdown
 	const [showResetDropdown, setShowResetDropdown] = useState(false);
 	// timer reference
 	const timerRef = useRef(null);
 
+	// Detecting whether device type is mobile or not using user-agent
 	useEffect(() => {
-		// Event listener to track screen size changes to/from mobile screen
-		window.matchMedia("(max-width: 480px)").addEventListener("change", (e) => {
-			setIsMobileDevice(e.matches);
-		});
+		const userAgent = window.navigator.userAgent;
+		// Simple regex check - for large scale apps, better to use third-party libraries
+		const isMobileDevice =
+			/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(userAgent);
 
+		setIsMobile(isMobileDevice);
+	}, []);
+
+	useEffect(() => {
 		// Event listener to close reset button dropdown on click on window
 		window.addEventListener("click", (e) => {
-			// If click is on reset dropdown, close after delay to make dropdown click item animation to be visible
-			if (e.target.id === "reset-dropdown") {
-				timerRef.current = setTimeout(function () {
-					setShowResetDropdown(false);
-				}, 200);
-			}
-			// If click is on reset button and on mobile device - do nothing as we already open it on the onClick prop of the button for mobile devices
-			else if (isMobileDevice && e.target.id === "reset-button") {
+			// If click is on reset button - do nothing as we already open it on the onClick prop of the button
+			if (e.target.id === "reset-button") {
 			}
 			// All other clicks - close the dropdown
 			else setShowResetDropdown(false);
@@ -68,18 +63,8 @@ export default function Editor(props) {
 
 		// Remove event listeners and clear timeout on component unmount to avoid stack overflow
 		return () => {
-			window
-				.matchMedia("(max-width: 480px)")
-				.removeEventListener("change", (e) => {
-					setIsMobileDevice(e.matches);
-				});
-
 			window.removeEventListener("click", (e) => {
-				if (e.target.id === "reset-dropdown") {
-					timerRef.current = setTimeout(function () {
-						setShowResetDropdown(false);
-					}, 200);
-				} else if (isMobileDevice && e.target.id === "reset-button") {
+				if (e.target.id === "reset-button") {
 				} else setShowResetDropdown(false);
 			});
 
@@ -90,38 +75,46 @@ export default function Editor(props) {
 
 	// Whenever device size changes, we want the editor configs to get affected
 	useEffect(() => {
-		setOpenEditor(!isMobileDevice);
-		setToolBarButtonsHover(isMobileDevice);
-	}, [isMobileDevice]);
+		setOpenEditor(!isMobile);
+		setToolBarButtonsHover(isMobile);
+	}, [isMobile]);
 
+	// Functions to manipulate the content of editor
 	const handleChange = (value, viewUpdate) => onChange(value);
 
 	const handleResetEditor = () => onChange(INITIAL_CONTENT_MAP[language]);
 
 	const handleClearEditor = () => onChange("");
 
+	// Functions to show/hide toolbar buttons on hover
 	const handleOnMouseEnterOnToolBarButtons = () =>
-		!isMobileDevice && setToolBarButtonsHover(true);
+		!isMobile && setToolBarButtonsHover(true);
 
 	const handleOnMouseExitFromToolBarButtons = () =>
-		!isMobileDevice && setToolBarButtonsHover(false);
+		!isMobile && setToolBarButtonsHover(false);
 
+	// Functions to show/hide dropdown on hover - Desktop devices
 	const handleOnResetButtonHover = () => {
-		if (!isMobileDevice) {
+		if (!isMobile) {
 			setShowResetDropdown(true);
 			handleOnMouseEnterOnToolBarButtons();
 		}
 	};
 
 	const handleOnResetButtonHoverExit = () => {
-		if (!isMobileDevice) {
+		if (!isMobile) {
 			setShowResetDropdown(false);
 			handleOnMouseExitFromToolBarButtons();
 		}
 	};
 
-	const handleResetButtonClick = () =>
-		isMobileDevice && setShowResetDropdown(true);
+	// Functions to show/hide dropdown on click - Mobile devices
+	const handleResetButtonClick = () => isMobile && setShowResetDropdown(true);
+
+	const handleDropdownItemClick = (onClick) => {
+		onClick();
+		handleOnResetButtonHoverExit();
+	};
 
 	// Reset button dropdown component
 	const DropDown = () => (
@@ -134,14 +127,14 @@ export default function Editor(props) {
 			<div
 				id="reset-dropdown"
 				className="reset-dropdown-item"
-				onClick={handleResetEditor}
+				onClick={() => handleDropdownItemClick(handleResetEditor)}
 			>
 				Reset Editor
 			</div>
 			<div
 				id="reset-dropdown"
 				className="reset-dropdown-item"
-				onClick={handleClearEditor}
+				onClick={() => handleDropdownItemClick(handleClearEditor)}
 			>
 				Clear Editor
 			</div>
