@@ -25,6 +25,8 @@ A responsive CodePen clone built using React. The `@uiw/react-codemirror` packag
 - 🔴 Reset on click, reveals a dropdown, from where the user can clear the editor or reset it to the default template.
 - 🟡 Save is used to save the contents of the editors as respective(.html/.css/.js) files.
 - 🟢 Expand/Collapse as the name suggests, expands or collapses the editor.
+- Contents of the editors are synced to local storage 😮 to prevent data loss on page reload.
+- Each Re-render happens every 250ms to efficiently render content instead of re-rendering on each keystroke on the editors.
 - Cool animations 🎭 and effects make the user experience awesome.
 
 <a name="installation"></a>
@@ -92,8 +94,10 @@ v20.5.0
 ## Screenshots 📸
 
 #### Desktop:
+<img width="1792" alt="Screenshot 2023-08-22 at 9 53 17 PM" src="https://github.com/chiraag918/codepen-clone/assets/39455997/f31711aa-7154-4540-bace-df672cdb469d">
 
 #### Mobile:
+<img width="313" alt="Screenshot 2023-08-22 at 9 54 50 PM" src="https://github.com/chiraag918/codepen-clone/assets/39455997/9d9bc8de-2688-419f-b27a-0e30405d02a9">
 
 <a name="contributing"></a>
 
