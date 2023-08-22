@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Web 🕸️ Simulator - CodePen clone 🧬
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive CodePen clone built using React. The `@uiw/react-codemirror` package is reponsible for building & customising the code editors. The app is divided into two sections, editor & simulator containers. The editor container consists of 3 editors each for HTML, CSS & JS. The simulator is an iframe view, where the code from the editors, compile down to render website inside it.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Frontend Libraries](#libraries)
+- [Prerequisites](#prerequesites)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+<a name="features"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features 🏆
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Write and edit HTML, CSS, and JavaScript code in a live editor.
+- See the live preview of your code output.
+- Responsive design for both desktop and mobile devices.
+- Theme for the app is inspired by MacOS.
+- Editors have 3 toolbar buttons - Reset, Save & Expand/Collapse.
+- 🔴 Reset on click, reveals a dropdown, from where the user can clear the editor or reset it to the default template.
+- 🟡 Save is used to save the contents of the editors as respective(.html/.css/.js) files.
+- 🟢 Expand/Collapse as the name suggests, expands or collapses the editor.
+- Contents of the editors are synced to local storage 😮 to prevent data loss on page reload.
+- Each Re-render happens every 250ms to efficiently render content instead of re-rendering on each keystroke on the editors.
+- Cool animations 🎭 and effects make the user experience awesome.
 
-### `npm test`
+<a name="installation"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation 💿
 
-### `npm run build`
+👉🏼 Clone this repository to your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/chiraag918/codepen-clone.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+👉🏼 Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd codepen-clone
+```
 
-### `npm run eject`
+👉🏼 Install the required dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+👉🏼 Build using:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<a name="usage"></a>
 
-## Learn More
+## Usage 🍽️
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👉🏼 Start the app using:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+Open your browser and visit http://localhost:3000 to access the CodePen clone.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<a name="libraries"></a>
 
-### Analyzing the Bundle Size
+## Frontend Libraries 🖼️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[React JS(UI)](https://reactjs.org/docs/getting-started.html),
+[@uiw/react-codemirror](https://www.npmjs.com/package/@uiw/react-codemirror),
+[sass](https://sass-lang.com/documentation/),
+[npm](https://www.npmjs.com/)
 
-### Making a Progressive Web App
+<a name="prerequesites"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Prerequisites
 
-### Advanced Configuration
+For local developments, the application requires NodeJS (version 20.5.0). To make sure this is available on the local machine, try running the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+$ node --version
+v20.5.0
+```
 
-### Deployment
+<a name="screenshots"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Screenshots 📸
 
-### `npm run build` fails to minify
+#### Desktop:
+<img width="1792" alt="Screenshot 2023-08-22 at 9 53 17 PM" src="https://github.com/chiraag918/codepen-clone/assets/39455997/f31711aa-7154-4540-bace-df672cdb469d">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Mobile:
+<img width="313" alt="Screenshot 2023-08-22 at 9 54 50 PM" src="https://github.com/chiraag918/codepen-clone/assets/39455997/9d9bc8de-2688-419f-b27a-0e30405d02a9">
+
+<a name="contributing"></a>
+
+## Contributing 🙏🏼
+
+Contributions to improve the application are welcome. To contribute, follow these steps:
+
+- Fork the repository on GitHub.
+- Create a new branch with a descriptive name for your feature or bug fix.
+- Make your changes and commit them with a clear message.
+- Push your branch to your forked repository.
+- Open a pull request to the main repository, explaining the changes you made.
+
+<a name="license"></a>
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
