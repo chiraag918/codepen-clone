@@ -14,7 +14,6 @@ iframe{
 }
 
 .primary-container {
-  padding: 1rem;
   max-width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -23,6 +22,7 @@ iframe{
   background-image: url("./assets/images/Wallpaper.jpg");
 
   .editor-container {
+    margin: .5rem .75rem;
     padding: .5rem;
     min-width: 120px;
     display:flex;
@@ -133,10 +133,23 @@ iframe{
 
 /* Handle for mobile devices  */
 @media only screen and (max-width: 480px){
+  body{
+    overflow-y: scroll;
+  }
   .primary-container {
     flex-direction: column;
-    overflow-y: scroll;
     overflow-x: hidden;
+    overflow-y: scroll;
+
+    .editor-container{
+      margin: .3rem .5rem;
+    }
+  }
+}
+
+@media only screen and (max-height: 400px){
+  body{
+    overflow-y: scroll;
   }
 }
 

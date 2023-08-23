@@ -24,6 +24,17 @@ function App() {
 
 	const [showIframe, setShowIframe] = useState(false);
 	const timerRef = useRef(null);
+	const iframeRef = useRef(null);
+
+	// To set the height of the body of iframe to 100vh by default
+	const handleIframeLoad = () => {
+		const iframe = iframeRef.current;
+		if (iframe) {
+			const iframeDocument =
+				iframe.contentDocument || iframe.contentWindow.document;
+			iframeDocument.body.style.height = "100vh";
+		}
+	};
 
 	// Refresh the iframe content every 250ms instead of re-rendering for every key-stroke on editors
 	useEffect(() => {
@@ -73,12 +84,13 @@ function App() {
 			{showIframe && (
 				<div className="container iframe-container">
 					<iframe
-						srcDoc={srcDoc}
-						title="output"
-						// To only allow scripts to be injected on the iframe
-						sandbox="allow-scripts"
 						width="100%"
 						height="100%"
+						srcDoc={srcDoc}
+						title="sandbox output"
+						sandbox="allow-same-origin allow-scripts"
+						ref={iframeRef}
+						onLoad={handleIframeLoad}
 					/>
 				</div>
 			)}

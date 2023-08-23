@@ -1,5 +1,5 @@
 // React Imports
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 // CodeMirror & its Plugin Imports
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -17,6 +17,7 @@ import {
 } from "../assets/images";
 // Other Imports
 import { EXTENSION_MAP, INITIAL_CONTENT_MAP } from "../constants";
+import { testUserAgentForMobileDevice } from "../utilities/utilFunctions";
 
 // Language configuration for CodeMirror component based on langauage
 const LANG_CONFIG_MAP = {
@@ -38,17 +39,10 @@ export default function Editor(props) {
 	const [toolBarButtonsHover, setToolBarButtonsHover] = useState(isMobile);
 	// state to open/close reset dropdown
 	const [showResetDropdown, setShowResetDropdown] = useState(false);
-	// timer reference
-	const timerRef = useRef(null);
 
 	// Detecting whether device type is mobile or not using user-agent
 	useEffect(() => {
-		const userAgent = window.navigator.userAgent;
-		// Simple regex check - for large scale apps, better to use third-party libraries
-		const isMobileDevice =
-			/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(userAgent);
-
-		setIsMobile(isMobileDevice);
+		setIsMobile(testUserAgentForMobileDevice());
 	}, []);
 
 	useEffect(() => {
@@ -67,8 +61,6 @@ export default function Editor(props) {
 				if (e.target.id === "reset-button") {
 				} else setShowResetDropdown(false);
 			});
-
-			clearTimeout(timerRef.current);
 		};
 		// eslint-disable-next-line
 	}, []);
