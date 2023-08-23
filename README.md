@@ -101,7 +101,7 @@ v20.5.0
 
 #### Mobile:
 
-<img width="313" alt="Screenshot 2023-08-22 at 9 54 50 PM" src="https://github.com/chiraag918/codepen-clone/assets/39455997/9d9bc8de-2688-419f-b27a-0e30405d02a9">
+<img width="466" alt="Screenshot 2023-08-24 at 4 01 04 AM" src="https://github.com/chiraag918/codepen-clone/assets/39455997/ebf86203-1e0f-4510-aff2-d02a20b9e9f6">
 
 <a name="contributing"></a>
 
