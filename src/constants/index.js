@@ -25,7 +25,6 @@ export const initialCssContent = `body {
 	align-content:center;
 	margin: 0;
   padding: 0;
-  min-height: 80vh;
 	overflow:scroll;
 	color: white;
   background-color: black;
